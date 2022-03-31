@@ -1,9 +1,9 @@
 import React from 'react'
-
-const canvas = () => {
+import PropTypes from 'prop-types';
+const canvas = (props) => {
   return (
     <div>
-         <h1>Hello World</h1>
+         <h1>Hello World {props.row}</h1>
     </div>
   )
 }
