@@ -12,6 +12,13 @@ function generateNum(){
   var x=document.getElementById('number');
   x.innerHTML=Math.random();
 }
+async function fetchFalsey()
+{
+  const url='https://newsapi.org/v2/top-headlines?q=UK&apiKey=2902e07919cb4e268ec388cc3f930a7e';
+  let data=await fetch(url);
+  console.log(!!document.getElementById('falsey'));
+  console.log(document.getElementById('falsey'));
+}
 function App() {
   var rows=[];
   const forceUpdate=useForceUpdate();
@@ -25,7 +32,8 @@ function App() {
      <p id="number">{Math.random()}</p>
      
      </div>
-      <tbody onClick={generateNum}>{rows}</tbody>
+      <tbody onClick={fetchFalsey}>{rows}</tbody>
+
       </>
   );
 }
