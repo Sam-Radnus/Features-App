@@ -19,6 +19,14 @@ async function fetchFalsey()
   console.log(!!document.getElementById('falsey'));
   console.log(document.getElementById('falsey'));
 }
+async function fetchMovie()
+{
+ // const url='https://api.themoviedb.org/3/search/movie?api_key=2023616ed87a6faf2ec9cd6de24b46ed&language=en-UK&query=Batman&page=1&region=GB';
+  const url='https://api.themoviedb.org/3/discover/movie?api_key=2023616ed87a6faf2ec9cd6de24b46ed&primary_release_date.gte=2021-01-01&primary_release_date.lte=2022-01-01&language=en-US&page=1';
+  let data=await fetch(url);
+  let parsedData=await data.json();
+  console.log(parsedData);
+}
 function App() {
   var rows=[];
   const forceUpdate=useForceUpdate();
@@ -32,7 +40,7 @@ function App() {
      <p id="number">{Math.random()}</p>
      
      </div>
-      <tbody onClick={fetchFalsey}>{rows}</tbody>
+      <tbody onClick={fetchMovie}>{rows}</tbody>
 
       </>
   );
