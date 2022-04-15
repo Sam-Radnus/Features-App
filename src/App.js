@@ -10,6 +10,7 @@ import Login from './components/Login';
 import { Component } from 'react';
 import Details from './components/LoginComps/Details';
 import UserInfo from './components/LoginComps/UserInfo';
+import {useNavigate} from "react-router-dom"
 import {BrowserRouter as Router,Link,Routes,Route} from 'react-router-dom';
 function useForceUpdate() {
   const [value, setValue] = useState(0);
@@ -29,7 +30,7 @@ function App() {
         <Route exact path="/Contact" element={<Contact/>}></Route>
         <Route exact path="/Login" element={<Login/>}>
           <Route  path="Details" element={<Details/>}/>
-          <Route  path="UserInfo" element={<UserInfo/>}/>
+          <Route  path="UserInfo/:username" element={<UserInfo/>}/>
         </Route>
       </Routes>
       
