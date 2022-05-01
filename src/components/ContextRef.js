@@ -11,7 +11,7 @@ function ContextRef(props) {
   return (
     <div>ContextRef
     <LoginContext.Provider value={{username,setUsername,setShowProfile}}>
-      { showProfile?<Username/>:<Context/>}
+      { !showProfile?<Context/>:<Username/>}
     </LoginContext.Provider>
     </div>
   )
