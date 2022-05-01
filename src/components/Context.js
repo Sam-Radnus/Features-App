@@ -1,9 +1,9 @@
 import React,{useContext} from 'react'
-import { AppContext } from './ContextRef'
+import {LoginContext} from './Contexts/LoginContext'
 import PropTypes from 'prop-types'
 
 function Context(props) {
-    const{setUsername,setShowProfile}=useContext(AppContext);
+    const{setUsername,setShowProfile}=useContext(LoginContext);
   return (
     <div> 
     <input

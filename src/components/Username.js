@@ -1,11 +1,11 @@
 import React ,{useEffect,useContext}from 'react'
 import PropTypes from 'prop-types'
-import {AppContext} from "./ContextRef";
+import {LoginContext} from './Contexts/LoginContext'
 function Username(props) {
-    const {username}=useContext(AppContext);
+    const {username}=useContext(LoginContext);
   return (
     <div>
-      { username.length!==0?<h1>User:{username}</h1>:''}
+     <h1>User:{username}</h1>
     </div>
   );
 }
