@@ -6,6 +6,8 @@ import {BrowserRouter as Router,Link,Routes,Route, Outlet} from 'react-router-do
 import "./Login.css";
 import {useMatch} from 'react-router-dom';
 import { getSuggestions } from './Api';
+import Context from './Context';
+import Username from './Username';
 import SuggestionList from './SuggestionList';
 function Login({onSearch}) {
     // const {path,url}=useMatch();
@@ -63,6 +65,8 @@ function Login({onSearch}) {
             ))}
             </div>
         )}
+        <Username/>
+
         </div>  
   )
 }
