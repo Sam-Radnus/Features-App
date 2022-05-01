@@ -6,11 +6,12 @@ import Username from './Username';
 export const AppContext=createContext(null);
 
 function ContextRef(props) {
+    const [showProfile,setShowProfile]=useState(false);
     const [username,setUsername]=useState("");
   return (
     <div>ContextRef
-    <AppContext.Provider value={{username,setUsername}}>
-        <Context/><Username/>
+    <AppContext.Provider value={{username,setUsername,setShowProfile}}>
+      { showProfile?<Context/>:<Username/>}
     </AppContext.Provider>
     </div>
   )
