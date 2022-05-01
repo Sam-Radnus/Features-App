@@ -3,14 +3,20 @@ import { AppContext } from './ContextRef'
 import PropTypes from 'prop-types'
 
 function Context(props) {
-    const{setUsername}=useContext(AppContext);
+    const{setUsername,setShowProfile}=useContext(AppContext);
   return (
     <div> 
     <input
-     onChange={(event1)=>{
-        setUsername(event1.target.value);
+    type="text"
+    placeholder="username"
+     onChange={(event)=>{
+        setUsername(event.target.value);
      }}
      />
+     <button 
+     onClick={()=>{
+         setShowProfile(true)
+     }}>LOGIN</button>
     </div>
   )
 }

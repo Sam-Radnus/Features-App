@@ -5,7 +5,7 @@ function Username(props) {
     const {username}=useContext(AppContext);
   return (
     <div>
-        <h1>User:{username}</h1>
+      { username.length!==0?<h1>User:{username}</h1>:''}
     </div>
   );
 }
