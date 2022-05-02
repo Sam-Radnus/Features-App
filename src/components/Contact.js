@@ -1,88 +1,52 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './Contact.css';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
+import { useState } from 'react';
 function Contact(props) {
-  var cards = document.getElementById('#card-slider .slider-item').toArray();
-
-  startAnim(cards);
-
-  function startAnim(array) {
-    if (array.length >= 4) {
-      TweenMax.fromTo(array[0], 0.5, { x: 0, y: 0, opacity: 0.75 }, { x: 0, y: -120, opacity: 0, zIndex: 0, delay: 0.03, ease: Cubic.easeInOut, onComplete: sortArray(array) });
-
-      TweenMax.fromTo(array[1], 0.5, { x: 79, y: 125, opacity: 1, zIndex: 1 }, { x: 0, y: 0, opacity: 0.75, zIndex: 0, boxShadow: '-5px 8px 8px 0 rgba(82,89,129,0.05)', ease: Cubic.easeInOut });
-
-      TweenMax.to(array[2], 0.5, { bezier: [{ x: 0, y: 250 }, { x: 65, y: 200 }, { x: 79, y: 125 }], boxShadow: '-5px 8px 8px 0 rgba(82,89,129,0.05)', zIndex: 1, opacity: 1, ease: Cubic.easeInOut });
-
-      TweenMax.fromTo(array[3], 0.5, { x: 0, y: 400, opacity: 0, zIndex: 0 }, { x: 0, y: 250, opacity: 0.75, zIndex: 0, ease: Cubic.easeInOut },);
-    } else {
-      $('#card-slider').append('<p>Sorry, carousel should contain more than 3 slides</p>')
-    }
-  }
-
-  function sortArray(array) {
-    clearTimeout(delay);
-    var delay = setTimeout(function () {
-      var firstElem = array.shift();
-      array.push(firstElem);
-      return startAnim(array);
-    }, 3000)
-  }
-
+  const [intervalz, setIntervalz] = useState(3000); //initial state here represents the interval for first image.
+  const onChange = (index, item) => {
+    setIntervalz(item.props["data-interval"]);
+  };
   return (
-    <div className="slider-wrap">
-      <div id="card-slider" className="slider">
-        <div className="slider-item">
-          <div className="animation-card_image">
-            <img src="https://uznayvse.ru/images/stories2016/uzn_1460039478.jpg" alt="" />
-          </div>
-          <div className="animation-card_content">
-            <h4 className="animation-card_content_title title-2">Charlize Theron 1</h4>
-            <p className="animation-card_content_description p-2">With no contractual commitments comes the freedom of having top notch content created whenever.</p>
-            <p className="animation-card_content_city">New York, NY</p>
-          </div>
-        </div>
-        <div className="slider-item">
-          <div className="animation-card_image">
-            <img src="https://uznayvse.ru/images/stories2016/uzn_1460039478.jpg" alt="" />
-          </div>
-          <div className="animation-card_content">
-            <h4 className="animation-card_content_title title-2">Charlize Theron 2</h4>
-            <p className="animation-card_content_description p-2">With no contractual commitments comes the freedom of having top notch content created whenever.</p>
-            <p className="animation-card_content_city">New York, NY</p>
-          </div>
-        </div>
-        <div className="slider-item">
-          <div className="animation-card_image">
-            <img src="https://uznayvse.ru/images/stories2016/uzn_1460039478.jpg" alt="" />
-          </div>
-          <div className="animation-card_content">
-            <h4 className="animation-card_content_title title-2">Charlize Theron 3</h4>
-            <p className="animation-card_content_description p-2">With no contractual commitments comes the freedom of having top notch content created whenever.</p>
-            <p className="animation-card_content_city">New York, NY</p>
-          </div>
-        </div>
-        <div className="slider-item">
-          <div className="animation-card_image">
-            <img src="https://uznayvse.ru/images/stories2016/uzn_1460039478.jpg" alt="" />
-          </div>
-          <div className="animation-card_content">
-            <h4 className="animation-card_content_title title-2">Charlize Theron 4</h4>
-            <p className="animation-card_content_description p-2">With no contractual commitments comes the freedom of having top notch content created whenever.</p>
-            <p className="animation-card_content_city">New York, NY</p>
-          </div>
-        </div>
-        <div className="slider-item">
-          <div className="animation-card_image">
-            <img src="https://uznayvse.ru/images/stories2016/uzn_1460039478.jpg" alt="" />
-          </div>
-          <div className="animation-card_content">
-            <h4 className="animation-card_content_title title-2">Charlize Theron 5</h4>
-            <p className="animation-card_content_description p-2">With no contractual commitments comes the freedom of having top notch content created whenever.</p>
-            <p className="animation-card_content_city">New York, NY</p>
-          </div>
-        </div>
-      </div>
+    <div>
+     <h1>Contact</h1>
+     <Carousel onChange={onChange}
+      autoPlay
+      interval={intervalz}
+      infiniteLoop={true}
+      showIndicators={false}
+      width={150}  
+      axis='vertical'>
+        
+           <div data-interval={1000}>
+                    <img  src="https://media.istockphoto.com/vectors/cannabis-leaf-vector-vector-id1156847000" /> 
+                    
+                    <p className="legend"><h1>Star Wars</h1></p>
+                </div>
+                <div data-interval={3000}>
+                     <img src="https://media.istockphoto.com/vectors/cannabis-or-marijuana-leaves-vector-id1070572972" /> 
+                    <p className="legend">Legend 2</p>
+                </div>
+                <div data-interval={5000}>
+                    <img src="https://media.istockphoto.com/vectors/solid-black-cannabis-marijuana-leaf-vector-icon-vector-id1140417105?s=612x612" /> 
+                    <p className="legend">Legend 3</p>
+                </div>
+                <div data-interval={7000}>
+                    <img  src="https://media.istockphoto.com/vectors/cannabis-leaf-vector-vector-id1156847000" /> 
+                    <p className="legend">Legend 1</p>
+                </div>
+                <div data-interval={9000}>
+                     <img  src="https://media.istockphoto.com/vectors/cannabis-or-marijuana-leaves-vector-id1070572972" /> 
+                    <p className="legend">Legend 2</p>
+                </div>
+                <div data-interval={11000}>
+                    <img h src="https://media.istockphoto.com/vectors/solid-black-cannabis-marijuana-leaf-vector-icon-vector-id1140417105?s=612x612" /> 
+                    <p className="legend">Legend 3</p>
+                </div>
+                
+            </Carousel>
+
     </div>
   )
 }
