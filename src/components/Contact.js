@@ -46,6 +46,7 @@ function Contact(props) {
                 </div>
                 
             </Carousel>
+
     </div>
   )
 }

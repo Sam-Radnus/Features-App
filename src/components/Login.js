@@ -16,14 +16,14 @@ function Login({onSearch}) {
     const [movie,setMovie]=useState([]);
     const [suggestions,setSuggestions]=useState([]);
     const [skipSuggestionSearch,setSkipSuggestionSearch]=useState(false);
-    
+    const [input,setInput]=useState('');
     useEffect(()=>{
       if(searchField === "" || skipSuggestionSearch) return;
       getMovies(searchField).then((foundSuggestions)=>{
         setSuggestions(foundSuggestions);
       })
-
-    },[searchField,skipSuggestionSearch]);
+     console.log(input);
+    },[input,searchField,skipSuggestionSearch]);
     const hasSuggestions=movie.length > 0;
     const getMovies=async (searchField)=>{
       const url=`https://api.themoviedb.org/3/search/movie?api_key=2023616ed87a6faf2ec9cd6de24b46ed&language=en-US&query=${searchField}&page=1&include_adult=false`;
@@ -45,6 +45,18 @@ function Login({onSearch}) {
       setSuggestions([]);
       setSearchField(suggestion);
     };
+    const handleChange=(e)=>{
+      const {value}=e.target;
+      const lastChar=value.slice(-1);
+      const isLetter=(/[a-zA-Z]/).test(lastChar);
+      if(isLetter && !input.includes(lastChar))
+          setInput(value);
+    }
+    const handleKeyDown=(e)=>{
+      if(e.code == 'Backspace'){
+        setInput(input.slice(0,input.length-1))
+      }
+    }
   return (
    <div>
        <div>
@@ -67,7 +79,10 @@ function Login({onSearch}) {
             </div>
         )}
         <ContextRef/>
-
+         <input value={input}
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
+          />
         </div>  
   )
 }
